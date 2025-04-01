@@ -12,7 +12,8 @@ void clearScreen() {
 
 // 顯示歡迎畫面
 
-void showWelcomeScreen() {
+void showWelcomeScreen() 
+{
 
     printf("**************************************\n");
     printf("*                  *                 *\n");
@@ -60,7 +61,7 @@ int checkPassword()
 
     int password;
 
-    int correctPassword = 8780;
+    int correctPassword = 2024;
 
     printf("請輸入4位數密碼: ");
 	 
@@ -74,6 +75,10 @@ int checkPassword()
 	{
 
         printf("密碼正確，恭喜進入系統。\n");
+        printf("請按ENTER鍵進入下一步\n");
+        getchar();
+        
+        clearScreen();  // 清除螢幕
 
         return 1;
 
@@ -84,9 +89,39 @@ int checkPassword()
         printf("\a密碼錯誤，麻煩重新輸入。\n");
 
         return 0;
-
+   
     }
 
+}
+// 判斷字元類型
+void checkCharacterType() 
+{
+      char inputChar;
+      printf("\n========== 主選單 ==========\n");
+      printf("1. 'A'....'Z':Uppercase\n");
+      printf("2. 'a'....'z':Lowercase\n");
+      printf("3. '0'....'9':Digit\n");
+      printf("4. Otherwise:丁維棕\n");
+      printf("請輸入一個字元: ");
+      fflush(stdin); // 清除輸入緩衝
+      scanf(" %c", &inputChar);
+
+     if (inputChar >= 'A' && inputChar <= 'Z') 
+	 {
+      printf("Uppercase\n");
+     } 
+      else if (inputChar >= 'a' && inputChar <= 'z') 
+	     {
+           printf("Lowercase\n");
+         } 
+		 else if (inputChar >= '0' && inputChar <= '9') 
+		 {
+           printf("Digit\n");
+         } 
+		 else 
+		 {
+           printf("E3A61 丁維棕\n"); 
+         }
 }
 int main() {
 
@@ -98,7 +133,8 @@ int main() {
 
     while (!checkPassword());
 
-
+     // 判斷字元類型
+    checkCharacterType();
 
     system("PAUSE");  // 暫停螢幕
 
